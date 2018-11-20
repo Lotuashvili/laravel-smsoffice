@@ -1,0 +1,26 @@
+{
+    "name": "lotuashvili/laravel-smsoffice",
+    "description": "SMSOffice.ge Service and Notification channel for Laravel",
+    "authors": [
+        {
+            "name": "Levan Lotuashvili",
+            "email": "l.lotuashvili@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lotuashvili\\LaravelSmsOffice\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lotuashvili\\LaravelSmsOffice\\SmsOfficeServiceProvider"
+            ]
+        }
+    }
+}
