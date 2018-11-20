@@ -41,6 +41,13 @@ class SmsOffice
             $to = '995' . $to;
         }
 
+        /*
+         * Check if message contains UTF8 characters
+         */
+        if (strlen($message) !== strlen(utf8_decode($message))) {
+            $message = rawurlencode($message);
+        }
+
         $url = sprintf(self::SEND_URL, $this->apiKey, $to, $this->sender, $message);
 
         return $this->client->request('GET', $url)->getBody()->getContents();
