@@ -3,6 +3,7 @@
 namespace Lotuashvili\LaravelSmsOffice;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
 use Lotuashvili\LaravelSmsOffice\Exceptions\CouldNotSendNotification;
 
 class SmsOffice
@@ -17,17 +18,23 @@ class SmsOffice
 
     protected $client;
 
+    protected $driver;
+
     public function __construct($apiKey = null, $sender = null)
     {
         $this->apiKey = $apiKey ?? config('smsoffice.key');
         $this->sender = $sender ?? config('smsoffice.sender');
-        $this->driver = config('smsoffice.sms_driver');
+        $this->driver = config('smsoffice.driver');
 
         $this->client = new Client();
     }
 
     public function send($to, $message)
     {
+        if ($this->driver === 'log') {
+            return Log::info('SMSOFFICE: ' . $to . ' - ' . $message);
+        }
+
         $this->checkParameters();
 
         if (substr($to, 0, 3) != '995') {
