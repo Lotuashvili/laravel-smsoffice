@@ -1,8 +1,8 @@
 # Laravel SmsOffice
 
-This package is service for smsoffice.ge with notification channels.
+This package allows you to send SMS messages with SmsOffice.ge API
 
-You can simply write `$user->notify(new FooNotification)`
+You can send sms with notification class or directly with SmsOffice class 
 
 ## Installation
 
