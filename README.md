@@ -84,3 +84,14 @@ public function sendSms(SmsOffice $smsoffice)
     $smsoffice->send('599123123', 'Test Message');
 }
 ```
+
+### Get Balance
+
+```php
+use Lotuashvili\LaravelSmsOffice\SmsOffice;
+
+public function getBalance(SmsOffice $smsoffice)
+{
+    $smsoffice->balance();
+}
+```
