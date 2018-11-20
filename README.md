@@ -4,21 +4,39 @@ This package allows you to send SMS messages with SmsOffice.ge API
 
 You can send sms with notification class or directly with SmsOffice class 
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Development Mode Config](#development-mode-config)
+- [Usage](#usage)
+
 ## Installation
 
 ```
 composer require lotuashvili/laravel-smsoffice
 ```
 
+#### For Laravel <= 5.4
+
+If you're using Laravel 5.4 or lower, you have to manually add a service provider in your `config/app.php` file.
+Open `config/app.php` and add `SmsOfficeServiceProvider` to the `providers` array.
+
+```php
+'providers' => [
+    # Other providers
+    Lotuashvili\LaravelSmsOffice\SmsOfficeServiceProvider::class,
+],
+```
+
 Then run:
 
 ```
-php artisan vendor:publish --provider="Lotuashvili\LaravelSmsOffice\SmsOfficeServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Lotuashvili\LaravelSmsOffice\SmsOfficeServiceProvider"
 ```
 
 Place your api key and sender name in `config/smsoffice.php` file
 
-## Using log instead of sending real sms
+## Development mode config
 
 If you want to use log in development instead of sending real sms, then add `SMSOFFICE_DRIVER=log` to your `.env` file
 
