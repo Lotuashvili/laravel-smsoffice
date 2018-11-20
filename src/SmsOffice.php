@@ -20,10 +20,10 @@ class SmsOffice
 
     protected $driver;
 
-    public function __construct($apiKey = null, $sender = null)
+    public function __construct()
     {
-        $this->apiKey = $apiKey ?? config('smsoffice.key');
-        $this->sender = $sender ?? config('smsoffice.sender');
+        $this->apiKey = config('smsoffice.key');
+        $this->sender = config('smsoffice.sender');
         $this->driver = config('smsoffice.driver');
 
         $this->client = new Client();
