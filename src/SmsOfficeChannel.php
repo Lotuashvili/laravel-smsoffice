@@ -7,7 +7,9 @@ use Lotuashvili\LaravelSmsOffice\Exceptions\CouldNotSendNotification;
 
 class SmsOfficeChannel
 {
-    private $sms;
+    protected $sms;
+
+    protected $routeName = 'Sms';
 
     /**
      * SMSChannel constructor.
@@ -29,7 +31,7 @@ class SmsOfficeChannel
     {
         $message = $notification->toSms($notifiable);
 
-        if (!$to = $notifiable->routeNotificationFor('Sms')) {
+        if (!$to = $notifiable->routeNotificationFor($this->routeName)) {
             throw CouldNotSendNotification::numberNotProvided();
         }
 
