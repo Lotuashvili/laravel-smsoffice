@@ -35,6 +35,11 @@ class SmsOfficeChannel
             throw CouldNotSendNotification::numberNotProvided();
         }
 
-        $this->sms->send($to, $message);
+        if (is_array($message)) {
+            $reference = data_get($message, 'reference');
+            $message = data_get($message, 'message');
+        }
+
+        $this->sms->send($to, $message, $reference ?? null, $notifiable);
     }
 }

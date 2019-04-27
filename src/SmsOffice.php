@@ -3,7 +3,9 @@
 namespace Lotuashvili\LaravelSmsOffice;
 
 use GuzzleHttp\Client;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
+use Lotuashvili\LaravelSmsOffice\Events\SmsSent;
 use Lotuashvili\LaravelSmsOffice\Exceptions\CouldNotSendNotification;
 
 class SmsOffice
@@ -29,7 +31,7 @@ class SmsOffice
         $this->client = new Client();
     }
 
-    public function send($to, $message)
+    public function send($to, $message, $reference = null, Model $model = null)
     {
         if ($this->driver === 'log') {
             return Log::info('SMSOFFICE: ' . $to . ' - ' . $message);
@@ -50,7 +52,15 @@ class SmsOffice
 
         $url = sprintf(self::SEND_URL, $this->apiKey, $to, $this->sender, $message);
 
-        return $this->client->request('GET', $url)->getBody()->getContents();
+        if ($reference) {
+            $url .= '&reference=' . $reference;
+        }
+
+        $response = $this->client->request('GET', $url)->getBody()->getContents();
+
+        event(new SmsSent($to, $message, $reference, $model));
+
+        return $response;
     }
 
     public function balance()
