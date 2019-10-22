@@ -39,8 +39,15 @@ class SmsOffice
 
         $this->checkParameters();
 
+        preg_match_all('!\d+!', $to, $matches);
+        $to = implode($matches[0]);
+
         if (substr($to, 0, 3) != '995') {
             $to = '995' . $to;
+        }
+
+        if (strlen($to) !== 12) {
+            throw CouldNotSendNotification::invalidNumber();
         }
 
         /*

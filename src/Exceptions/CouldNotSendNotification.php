@@ -2,8 +2,20 @@
 
 namespace Lotuashvili\LaravelSmsOffice\Exceptions;
 
-class CouldNotSendNotification extends \Exception
+use Exception;
+
+class CouldNotSendNotification extends Exception
 {
+    /**
+     * Thrown when the given phone number is invalid
+     *
+     * @return static
+     */
+    public static function invalidNumber()
+    {
+        return new static('Phone number is invalid');
+    }
+
     /**
      * Thrown when there is no number provided
      *
