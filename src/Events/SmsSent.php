@@ -34,10 +34,10 @@ class SmsSent
      *
      * @param int $to
      * @param string $message
-     * @param string $reference
+     * @param string|null $reference
      * @param Model|null $model
      */
-    public function __construct(int $to, string $message, string $reference, Model $model = null)
+    public function __construct(int $to, string $message, string $reference = null, Model $model = null)
     {
         $this->to = $to;
         $this->message = $message;
