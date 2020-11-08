@@ -4,6 +4,8 @@ This package allows you to send SMS messages with SmsOffice.ge API
 
 You can send sms with notification class or directly with SmsOffice class 
 
+![Laravel SmsOffice](cover.png)
+
 ## Table of Contents
 
 - [Installation](#installation)
