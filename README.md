@@ -1,5 +1,9 @@
 # Laravel SmsOffice
 
+[![Latest Stable Version](https://img.shields.io/packagist/v/lotuashvili/laravel-smsoffice.svg)](https://packagist.org/packages/lotuashvili/laravel-smsoffice)
+[![Total Downloads](https://img.shields.io/packagist/dt/lotuashvili/laravel-smsoffice.svg)](https://packagist.org/packages/lotuashvili/laravel-smsoffice)
+[![Downloads Month](https://img.shields.io/packagist/dm/lotuashvili/laravel-smsoffice.svg)](https://packagist.org/packages/lotuashvili/laravel-smsoffice)
+
 This package allows you to send SMS messages with SmsOffice.ge API
 
 You can send sms with notification class or directly with SmsOffice class 
